@@ -14,16 +14,15 @@ addons:
       - libsuitesparse-dev
       - liblapack-dev
       - libblas-dev
+      - gfortran
 
 before_install:
  - pip install numpy
  - pip install scipy cython
  - pip install coveralls
 
-install:
- - python setup.py install
-
 script:
+ - python setup.py install
  - python setup.py test
  - mpg -h
 
