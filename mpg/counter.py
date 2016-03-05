@@ -34,7 +34,7 @@ from .util import (
 class TransitionCounter(object):
 
     def __init__(self, k, alphabet=set("ACGT")):
-        self.bitmask = 2**(2*k)-1  # Set lowest 2*k bits
+        self.bitmask = 2**(2 * k) - 1  # Set lowest 2*k bits
         self.k = k
         self.alphabet = set(alphabet)
         self.n = len(alphabet) ** k

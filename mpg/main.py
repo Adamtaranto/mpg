@@ -3,6 +3,7 @@ from . import *
 from docopt import docopt
 from sys import stdout, stderr
 
+
 def mpg_main():
     cli = '''
     USAGE:

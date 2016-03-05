@@ -4,13 +4,14 @@ from .util import (
     hash_to_kmer,
 )
 
+
 class MarkovGenerator(object):
 
     def __init__(self, transcount, seed=None):
         self.P = transcount.transitions
         self.pi = transcount.steady_state
         self.k = transcount.k
-        self.bitmask = 2**(2*self.k)-1
+        self.bitmask = 2**(2 * self.k) - 1
         self.rand = random.RandomState()
         self.rand.seed(seed)
 

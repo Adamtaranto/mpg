@@ -9,6 +9,7 @@ from .util import (
     hash_to_kmer,
 )
 
+
 def test_iter_kmers():
     dbs = "AACAGATCCGCTGGTTA"
     k = 2
@@ -18,6 +19,7 @@ def test_iter_kmers():
     assert counts.sum() == len(dbs) - k + 1, counts.sum()
     assert (counts == 1).all(), counts
 
+
 def test_hash_to_kmer():
     k = 2
     hashes = range(4**k)
@@ -25,6 +27,7 @@ def test_hash_to_kmer():
     for hsh, mer in zip(hashes, kmers):
         h2k = hash_to_kmer(hsh, k)
         assert h2k == mer, (hsh, mer, h2k)
+
 
 def test_transition_counter_consume():
     dbs = 'AAACAAGAATACCACGACTAGCAGGAGTATCATGATTCCCGCCTCGGCGTCTGCTTGGGTGTTTAA'
@@ -37,5 +40,3 @@ def test_transition_counter_consume():
     pi = t.steady_state
     assert pi.sum() == 1, pi.sum()
     assert np.allclose(pi.dot(t.P.toarray()),  pi), pi
-
-
