@@ -1,6 +1,4 @@
 from ._util import (
-    ntnum,
-    numnt,
     hash2kmer,
     iter_kmers,
 )
