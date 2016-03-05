@@ -2,7 +2,7 @@ cimport cython
 ctypedef unsigned long long int u64
 
 @cython.boundscheck(False)
-def hash2kmer(int h, int k):
+def hash_to_kmer(int h, int k):
     '''Convert a hash value at given k to the string representation.
     '''
     cdef const char *nts = 'ACGT'

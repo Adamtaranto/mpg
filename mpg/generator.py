@@ -1,7 +1,7 @@
 from numpy import random
 
 from .util import (
-    hash2kmer,
+    hash_to_kmer,
 )
 
 class MarkovGenerator(object):
@@ -19,7 +19,7 @@ class MarkovGenerator(object):
             self.rand.seed(seed)
 
         prev_mer = self.rand.choice(self.pi.size, p=self.pi)
-        sequence = list(hash2kmer(prev_mer, self.k))
+        sequence = list(hash_to_kmer(prev_mer, self.k))
 
         for x in range(self.k, length):
             # Emission probs for the previous kmer

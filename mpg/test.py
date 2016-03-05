@@ -6,7 +6,7 @@ from .counter import TransitionCounter
 from .generator import MarkovGenerator
 from .util import (
     iter_kmers,
-    hash2kmer,
+    hash_to_kmer,
 )
 
 def test_iter_kmers():
@@ -18,12 +18,12 @@ def test_iter_kmers():
     assert counts.sum() == len(dbs) - k + 1, counts.sum()
     assert (counts == 1).all(), counts
 
-def test_hash2kmer():
+def test_hash_to_kmer():
     k = 2
     hashes = range(4**k)
     kmers = map(''.join, list(itl.product(list('ACGT'), repeat=k)))
     for hsh, mer in zip(hashes, kmers):
-        h2k = hash2kmer(hsh, k)
+        h2k = hash_to_kmer(hsh, k)
         assert h2k == mer, (hsh, mer, h2k)
 
 def test_transition_counter_consume():

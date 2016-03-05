@@ -1,5 +1,5 @@
 from ._util import (
-    hash2kmer,
+    hash_to_kmer,
     iter_kmers,
 )
 
