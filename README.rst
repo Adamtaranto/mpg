@@ -17,9 +17,8 @@ Installation
 
 .. code-block:: shell
 
-    git clone https://github.com/kdmurray91/mpg
-    cd mpg
-    pip install -U -e .
+    pip install cython numpy nose
+    pip install -U -e 'git+https://github.com/kdmurray91/mpg#egg=mpg'
 
 
 Usage
