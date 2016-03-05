@@ -10,8 +10,9 @@
 *.so
 .eggs
 *.egg-info
-build
 .coverage
+build
+dist
 
 # Cython compiled files (for now)
 *.c
