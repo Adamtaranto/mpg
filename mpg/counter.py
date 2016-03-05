@@ -26,6 +26,11 @@ from scipy import sparse
 from scipy.sparse import linalg
 import yaml
 
+from .util import (
+    iter_kmers,
+)
+
+
 class TransitionCounter(object):
 
     def __init__(self, k, alphabet=set("ACGT")):
