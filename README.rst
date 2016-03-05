@@ -9,6 +9,9 @@ Many thanks to Ben Kaehler for a proof of concept and mathematical assistance.
 
 **Disclaimer**: This is unstable software at the moment. Use with caution.
 
+.. image:: https://travis-ci.org/kdmurray91/mpg.svg?branch=master
+    :target: https://travis-ci.org/kdmurray91/mpg
+
 Installation
 ------------
 
