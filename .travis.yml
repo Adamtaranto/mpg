@@ -1,11 +1,19 @@
 language: python
+
 python:
   - 2.7
   - 3.3
-
   - 3.4
   - 3.5
   - nightly
+
+# build-deps of sci/numpy
+addons:
+  apt:
+    packages:
+      - libsuitesparse-dev
+      - liblapack-dev
+      - libblas-dev
 
 before_install:
  - pip install numpy
