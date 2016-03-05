@@ -1,6 +1,7 @@
 *.bak
 *.yaml
 *.yml
+!.travis.yml
 *.swp
 
 # Python junk
@@ -10,6 +11,7 @@
 .eggs
 *.egg-info
 build
+.coverage
 
 # Cython compiled files (for now)
 *.c
