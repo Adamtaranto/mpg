@@ -1,9 +1,13 @@
+import itertools as itl
 
-def test_ntnum():
-    truth = {'a': 0, 'c': 1, 'g': 2, 't': 3}
-    for a in 'ACGTacgt':
-        assert ntnum(a) == truth.get(a.lower(), 0), (a, ntnum(a))
+import numpy as np
 
+from .counter import TransitionCounter
+from .generator import MarkovGenerator
+from .util import (
+    iter_kmers,
+    hash2kmer,
+)
 
 def test_iter_kmers():
     dbs = "AACAGATCCGCTGGTTA"
@@ -13,6 +17,14 @@ def test_iter_kmers():
         counts[kmer] += 1
     assert counts.sum() == len(dbs) - k + 1, counts.sum()
     assert (counts == 1).all(), counts
+
+def test_hash2kmer():
+    k = 2
+    hashes = range(4**k)
+    kmers = map(''.join, list(itl.product(list('ACGT'), repeat=k)))
+    for hsh, mer in zip(hashes, kmers):
+        h2k = hash2kmer(hsh, k)
+        assert h2k == mer, (hsh, mer, h2k)
 
 def test_transition_counter_consume():
     dbs = 'AAACAAGAATACCACGACTAGCAGGAGTATCATGATTCCCGCCTCGGCGTCTGCTTGGGTGTTTAA'
