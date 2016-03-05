@@ -36,7 +36,7 @@ install_requires = [
     'screed>=0.9',
     'numpy',
     'scipy',
-    'yaml',
+    'pyyaml',
 ]
 
 test_requires = [
