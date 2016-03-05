@@ -1,27 +1,26 @@
 language: python
 
+sudo: required
+dist: trusty
+
 python:
-  - 2.7
-  - 3.3
   - 3.4
-  - 3.5
-  - nightly
 
 # build-deps of sci/numpy
 addons:
   apt:
     packages:
-      - libsuitesparse-dev
-      - liblapack-dev
-      - libblas-dev
-      - gfortran
+      - python3-numpy
+      - python3-scipy
+      - python3-pip
+      - cython
 
 before_install:
- - pip install numpy
- - pip install scipy cython
+ - deactivate
  - pip install coveralls
 
 script:
+ - deactivate
  - python setup.py install
  - python setup.py test
  - mpg -h
