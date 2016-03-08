@@ -94,6 +94,6 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Scientific/Engineering :: Bio-Informatics",
-        #TODO: add license
+        "License :: OSI Approved :: MIT License",
     ],
 )
