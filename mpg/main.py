@@ -21,7 +21,12 @@
 # SOFTWARE.
 
 from __future__ import absolute_import, division, print_function
-from . import *
+from . import (
+    TransitionCounter,
+    MarkovGenerator,
+)
+from .util import seq2fa
+
 
 from docopt import docopt
 from sys import stdout, stderr
@@ -66,3 +71,31 @@ def mpg_main():
     if l > 0:
         print('Generating sequence of {} bases'.format(l), file=stderr)
         print(seq2fa('genseq', m.generate_sequence(l)))
+
+
+def mpg_bed_main():
+    cli = '''
+
+    USAGE:
+        mpg-bed ...
+
+    OPTIONS:
+        fill in options
+
+    '''
+    # markov order
+    K = 8
+
+    states = {
+        'gene': TransitionCounter(K),
+        'intergene': TransitionCounter(K),
+        'funky': TransitionCounter(K),
+    }
+
+    for state, sequence in parse_bed_fa(blerg):
+        states[state].consume(sequence)
+
+
+    for state, counter in states.items():
+        filename = '{}.yml'.format(state)
+        counter.save(filename)

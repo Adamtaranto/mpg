@@ -70,6 +70,7 @@ setup(
     entry_points={
         'console_scripts': [
             'mpg = mpg.main:mpg_main',
+            'mpg-bed = mpg.main:mpg_bed_main',
         ],
     },
     ext_modules=cythonize('mpg/_util.pyx'),
