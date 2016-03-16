@@ -22,7 +22,6 @@
 
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
-from Cython.Build import cythonize
 import versioneer
 
 
@@ -44,18 +43,20 @@ MPG: Markov Process Generator of DNA sequences
 
 setup_requires = [
     'nose',
-    'cython',
 ]
 
 install_requires = [
     'docopt>=0.6',
-    'screed>=0.9',
+    'nose',
     'numpy',
-    'scipy',
+    'pymer',
     'pyyaml',
+    'scipy',
+    'screed>=0.9',
 ]
 
 test_requires = [
+    'nose',
     'coverage>=3.7',
 ]
 
@@ -71,7 +72,6 @@ setup(
             'mpg = mpg.main:mpg_main',
         ],
     },
-    ext_modules=cythonize('mpg/_util.pyx'),
     cmdclass=command_classes,
     install_requires=install_requires,
     tests_require=test_requires,
@@ -86,6 +86,7 @@ setup(
     ],
     classifiers=[
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
         "Development Status :: 3 - Alpha",
         "Environment :: Console",

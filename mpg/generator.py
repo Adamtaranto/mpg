@@ -22,10 +22,7 @@
 
 from __future__ import absolute_import, division, print_function
 from numpy import random
-
-from .util import (
-    hash_to_kmer,
-)
+from pymer import hash_to_kmer
 
 
 class MarkovGenerator(object):

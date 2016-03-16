@@ -21,16 +21,13 @@
 # SOFTWARE.
 
 from __future__ import absolute_import, division, print_function
-import screed
 import numpy as np
+from pymer import iter_kmers
 import scipy as sp
 from scipy import sparse
 from scipy.sparse import linalg
+import screed
 import yaml
-
-from .util import (
-    iter_kmers,
-)
 
 
 class TransitionCounter(object):
