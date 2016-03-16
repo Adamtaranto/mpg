@@ -26,7 +26,6 @@ from Cython.Build import cythonize
 import versioneer
 
 
-# Inspired by the example at https://pytest.org/latest/goodpractises.html
 class NoseCommand(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
