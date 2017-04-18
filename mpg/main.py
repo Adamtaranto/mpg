@@ -21,7 +21,9 @@
 # SOFTWARE.
 
 from __future__ import absolute_import, division, print_function
-from . import *
+from . import MarkovGenerator
+from .util import seq2fa
+from pymer import TransitionKmerCounter
 
 from docopt import docopt
 from sys import stdout, stderr
@@ -36,14 +38,17 @@ def mpg_main():
         -l LENGTH       Length of sequence to simulate [default: 0].
         -k ORDER        Markovian Order [default: 1].
         -s SEED         Random seed for generation. (uses /dev/urandom if unset)
-        -d DUMPFILE     Dump data to DUMPFILE.
-        -r              Reference file is a Yaml dump file.
+        -d DUMPFILE     Dump transition count data to DUMPFILE.
+        -r              Reference file is a pre-computed transition count dump
+                        file (see -d).
+
     '''
     opts = docopt(cli)
     k = int(opts['-k'])
     l = int(opts['-l'])
 
-    t = TransitionCounter(k)
+    # + 1 as k is markovian order, TC takes kmer len
+    t = TransitionKmerCounter(k + 1)
     if opts['-r']:
         filename = opts['<reference>'][0]
         print('Loading reference dump from "{}"'.format(filename),
@@ -64,5 +69,5 @@ def mpg_main():
     m = MarkovGenerator(t, seed=opts['-s'])
     print('Initialised Markov Generator', file=stderr)
     if l > 0:
-        print('Generating sequence of {} bases'.format(l), file=stderr)
+        print("Generating sequence of", l, "bases", file=stderr)
         print(seq2fa('genseq', m.generate_sequence(l)))

@@ -25,6 +25,12 @@ from numpy import random
 from pymer import hash_to_kmer
 
 
+def numnt(x):
+    if x < 0 or x > 3:
+        raise ValueError("numnt must be given a number between 0 & 3")
+    return "ACGT"[x]
+
+
 class MarkovGenerator(object):
 
     def __init__(self, transcount, seed=None):
@@ -44,7 +50,8 @@ class MarkovGenerator(object):
 
         for x in range(self.k, length):
             # Emission probs for the previous kmer
-            p = self.P[prev_mer]
+            p = self.transitions[prev_mer]
+            print(p)
             nt = self.rand.choice(p.size, p=p)
             sequence.append(numnt(nt))
             # Add the nucleotide to the previous hash using bit ops

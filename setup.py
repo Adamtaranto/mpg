@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Copyright  2016  Kevin Murray <spam@kdmurray.id.au>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -33,8 +34,11 @@ class NoseCommand(TestCommand):
 
     def run_tests(self):
         # Run nose ensuring that argv simulates running nosetests directly
-        import nose
-        nose.run_exit(argv=['nosetests'])
+        try:
+            import nose
+            nose.run_exit(argv=['nosetests'])
+        except ImportError:
+            pass
 
 
 desc = """
@@ -47,12 +51,8 @@ setup_requires = [
 
 install_requires = [
     'docopt>=0.6',
-    'nose',
     'numpy',
     'pymer',
-    'pyyaml',
-    'scipy',
-    'screed>=0.9',
 ]
 
 test_requires = [
@@ -78,7 +78,7 @@ setup(
     setup_requires=setup_requires,
     description=desc,
     author="Kevin Murray",
-    author_email="spam@kdmurray.id.au",
+    author_email="kdmfoss@gmail.com",
     url="https://github.com/kdmurray91/mpg",
     keywords=[
         "bioinformatics",
@@ -86,7 +86,6 @@ setup(
     ],
     classifiers=[
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
         "Development Status :: 3 - Alpha",
         "Environment :: Console",

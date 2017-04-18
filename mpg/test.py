@@ -25,17 +25,4 @@ import itertools as itl
 
 import numpy as np
 
-from .counter import TransitionCounter
 from .generator import MarkovGenerator
-
-def test_transition_counter_consume():
-    dbs = 'AAACAAGAATACCACGACTAGCAGGAGTATCATGATTCCCGCCTCGGCGTCTGCTTGGGTGTTTAA'
-    t = TransitionCounter(2)
-    t.consume(dbs)
-    counts = t.transition_counts
-    assert (counts == 1).all(), counts
-    P = t.transitions
-    assert (P.sum(1) == 1).all(), P.sum(1)
-    pi = t.steady_state
-    assert pi.sum() == 1, pi.sum()
-    assert np.allclose(pi.dot(t.P.toarray()),  pi), pi
