@@ -17,7 +17,8 @@ Installation
 
 .. code-block:: shell
 
-    pip install cython numpy nose
+    pip install numpy nose
+    pip install -U -e 'git+https://github.com/kdmurray91/pymer#egg=pymer'
     pip install -U -e 'git+https://github.com/kdmurray91/mpg#egg=mpg'
 
 
@@ -28,18 +29,18 @@ The script ``mpg`` should have been installed. This learns the transition
 probablitlies from sequences (in Fasta format) and generates random sequences
 from this Markov chain.
 
-To learn transition probablities for a 5th-order Markov chain from the
-Arabidopsis genome and store them in a file (``ath.yml``):
+To learn transition probabilities for a 5th-order Markov chain from the
+Arabidopsis genome and store them in a file (``ath.h5``):
 
 .. code-block:: shell
 
-    mpg -k 5 -d ath.yml TAIR_10.fasta
+    mpg -k 5 -d ath.h5 TAIR_10.fasta
 
 To use these transition probablitlies to generate a sequence of 1000bp:
 
 .. code-block:: shell
 
-    mpg -l 1000 -r ath.yml
+    mpg -l 1000 -r ath.h5
 
 To do the above operations at once:
 
