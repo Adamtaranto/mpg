@@ -36,7 +36,7 @@ class MarkovGenerator(object):
     def __init__(self, transcount, seed=None):
         self.P = transcount.transitions
         self.pi = transcount.steady_state
-        self.k = transcount.k
+        self.k = transcount.k - 1
         self.bitmask = 2**(2 * self.k) - 1
         self.rand = random.RandomState()
         self.rand.seed(seed)
@@ -50,8 +50,7 @@ class MarkovGenerator(object):
 
         for x in range(self.k, length):
             # Emission probs for the previous kmer
-            p = self.transitions[prev_mer]
-            print(p)
+            p = self.P[prev_mer]
             nt = self.rand.choice(p.size, p=p)
             sequence.append(numnt(nt))
             # Add the nucleotide to the previous hash using bit ops

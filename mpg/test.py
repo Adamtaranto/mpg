@@ -24,5 +24,25 @@ from __future__ import absolute_import, division, print_function
 import itertools as itl
 
 import numpy as np
+import random
 
 from .generator import MarkovGenerator
+from pymer import TransitionKmerCounter
+
+
+def test_generator():
+
+    length = 1000
+    for _ in range(10):
+        t = TransitionKmerCounter(3)
+        t.consume("".join(random.choice("ACGT") for x in range(1000)))
+
+        m = MarkovGenerator(t, seed=3301)
+        seq = m.generate_sequence(length)
+        assert len(seq) == length
+
+        at = seq.count("A") + seq.count("T")
+
+        # Check generated GC is within 1pct of expected
+        sim = at/length - 2/3
+        assert sim <= 0.01
