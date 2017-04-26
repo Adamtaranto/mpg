@@ -3,3 +3,4 @@ numpy
 pymer>=0.3.2
 nose
 coverage
+screed>=1.0
