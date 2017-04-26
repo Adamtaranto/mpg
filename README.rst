@@ -17,9 +17,7 @@ Installation
 
 .. code-block:: shell
 
-    pip install numpy nose
-    pip install -U -e 'git+https://github.com/kdmurray91/pymer#egg=pymer'
-    pip install -U -e 'git+https://github.com/kdmurray91/mpg#egg=mpg'
+    pip3 install mpg
 
 
 Usage
