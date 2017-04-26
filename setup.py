@@ -55,11 +55,11 @@ install_requires = [
 
 test_requires = [
     'nose',
-    'coverage>=3.7',
+    'coverage',
 ]
 
-command_classes=versioneer.get_cmdclass()
-command_classes['test'] =  NoseCommand
+command_classes = versioneer.get_cmdclass()
+command_classes['test'] = NoseCommand
 
 setup(
     name="mpg",
