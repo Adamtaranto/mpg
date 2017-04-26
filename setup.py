@@ -50,8 +50,7 @@ setup_requires = [
 install_requires = [
     'docopt>=0.6',
     'numpy',
-    'pymer>=0.3.2',
-    'screed>=1.0',
+    'pymer>=0.3.3',
 ]
 
 test_requires = [
