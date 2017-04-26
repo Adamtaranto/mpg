@@ -41,9 +41,7 @@ class NoseCommand(TestCommand):
             pass
 
 
-desc = """
-MPG: Markov Process Generator of DNA sequences
-"""
+desc = "MPG: Markov Process Generator of DNA sequences"
 
 setup_requires = [
     'nose',
@@ -52,7 +50,7 @@ setup_requires = [
 install_requires = [
     'docopt>=0.6',
     'numpy',
-    'pymer>=0.3.0',
+    'pymer>=0.3.2',
 ]
 
 test_requires = [
